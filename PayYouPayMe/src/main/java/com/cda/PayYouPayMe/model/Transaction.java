@@ -20,15 +20,15 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private Float amount;
 	private String messageContent;
 	private LocalDate date;
-	
+
 	@ManyToOne
 	private Utilisateur sender;
-	
+
 	@ManyToOne
 	private Utilisateur reciever;
-	
+
 }
