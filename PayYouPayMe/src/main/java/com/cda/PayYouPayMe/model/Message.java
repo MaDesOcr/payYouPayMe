@@ -27,4 +27,52 @@ public class Message {
 
 	@ManyToOne
 	private Utilisateur utilisateur;
+
+	
+	
+	
+	public Message() {
+		super();
+	}
+
+	public Message(String content, LocalDate date) {
+		super();
+		this.content = content;
+		this.date = date;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	
+	
 }

@@ -1,0 +1,36 @@
+<h1> ALL DATAS </h1>
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Content</th>
+		<th>Date</th> 
+		<th>Utilisateur name</th>
+	</tr>
+	<tr th:each="message : ${messages}">
+		<td th:text="${message.id}"/>
+		<td th:text="${message.content}"/>
+		<td th:text="${message.date}"/>
+	</tr> 
+</table>
+
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>MessageContent</th>
+		<th>Date</th> 
+		<th>Amount</th> 		
+		<th>Sender name</th>
+		<th>Reciever name</th>
+		
+	</tr>
+	<tr th:each="transaction : ${transactions}">
+		<td th:text="${transaction.id}"/>
+		<td th:text="${transaction.messageContent}"/>
+		<td th:text="${transaction.date}"/>
+		<td th:text="${transaction.sender}"/>
+		<td th:text="${transaction.reciever}"/>
+		
+	</tr> 
+</table>
