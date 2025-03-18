@@ -27,7 +27,8 @@ public class DataInitializer {
 			Utilisateur u1 = new Utilisateur();
 			u1.setFirstName("firstNameU1");
 			u1.setLastName("LastNameU1");
-			u1.setUsername("user");
+			u1.setUsername("usertest");
+			u1.setLogin("usertest");
 		//	u1.setPassword(passwordEncoder.encode("user"));
 			u1.setBalance(30f);
 			utilisateurRepository.save(u1);

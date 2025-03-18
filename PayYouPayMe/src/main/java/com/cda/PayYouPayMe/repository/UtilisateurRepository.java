@@ -10,4 +10,6 @@ import com.cda.PayYouPayMe.model.Utilisateur;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
 
-    Optional<Utilisateur> findByUsername(String username);}
+    Optional<Utilisateur> findByUsername(String username);
+    Optional<Utilisateur> findByLogin(String login);
+}
