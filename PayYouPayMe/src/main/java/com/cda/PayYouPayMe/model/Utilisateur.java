@@ -1,5 +1,6 @@
 package com.cda.PayYouPayMe.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -83,16 +84,16 @@ public class Utilisateur {
 	}
 
 	@OneToMany(mappedBy = "sender")
-	private List<Transaction> transactionSent;
+	private List<Transaction> transactionSent = new ArrayList<Transaction>();
 
 	@OneToMany(mappedBy = "reciever")
-	private List<Transaction> transactionRecieved;
+	private List<Transaction> transactionRecieved = new ArrayList<Transaction>();
 
 	@OneToMany(mappedBy = "utilisateur")
-	private List<Message> messageSent;
+	private List<Message> messageSent = new ArrayList<Message>();
 
 	@ManyToMany//(mappedBy = "contact")
-	private List<Utilisateur> contact;
+	private List<Utilisateur> contact = new ArrayList<Utilisateur>();
 
 	public Integer getId() {
 		return id;

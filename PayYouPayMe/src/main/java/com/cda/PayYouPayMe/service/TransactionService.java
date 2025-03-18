@@ -31,16 +31,7 @@ public class TransactionService {
 		
 		return this.transactionRepository.findAll();
 	}
-	
-    public Utilisateur getCurrentUser() {
-        String username = authService.getCurrentUsername();
-        if (username != null) {
-            Optional<Utilisateur> utilisateur = utilisateurRepository.findByLogin(username);
-            return utilisateur.orElse(null);
-        }
-        return null;
-    }
-    
+	    
     public List<Transaction> getCurrentUserTransactions() {
         String username = authService.getCurrentUsername();
         if (username != null) {
