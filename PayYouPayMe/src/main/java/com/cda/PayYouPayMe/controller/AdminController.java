@@ -1,5 +1,7 @@
 package com.cda.PayYouPayMe.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,8 @@ import com.cda.PayYouPayMe.service.UtilisateurService;
 @RequestMapping("/admin")
 public class AdminController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    
 	private final MessageService messageService;
 	private final TransactionService transactionService;
 	private final UtilisateurService utilisateurService;
@@ -34,6 +38,8 @@ public class AdminController {
 	
 	@GetMapping("/alldatas")
 	public String getAllDatas(Model model) {
+        logger.warn("Connect to allDatas!");
+
 		model.addAttribute("messages", messageService.getAllMessages());
 		model.addAttribute("transactions", transactionService.getAllTransactions());
 		model.addAttribute("utilisateurs", utilisateurService.getAllUtilisateurs());

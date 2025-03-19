@@ -18,13 +18,16 @@ public class TransactionService {
 	private final TransactionRepository transactionRepository;
     private final AuthentificationService authService;
     private final UtilisateurRepository utilisateurRepository;
+    private final UtilisateurService utilisateurService;
     
 	public TransactionService(TransactionRepository transactionRepository,
 			AuthentificationService authService,
-			UtilisateurRepository utilisateurRepository) {
+			UtilisateurRepository utilisateurRepository,
+			UtilisateurService utilisateurService) {
 		this.transactionRepository = transactionRepository;
 		this.authService = authService;
 		this.utilisateurRepository = utilisateurRepository;
+		this.utilisateurService = utilisateurService;
 	}
 
 	public List<Transaction> getAllTransactions() {
@@ -45,4 +48,28 @@ public class TransactionService {
         return utilisateur.map(u -> transactionRepository.findAllByUser(u))
                          .orElse(Collections.emptyList());
     }
+
+	public void createTransaction(String username, Float amount, String content) {
+		Utilisateur sender = utilisateurService.getCurrentUser();
+		Utilisateur reciever = utilisateurService.getUserByUserName(username);
+		
+		if(sender.getBalance() > amount && amount > 0 && reciever!=null) {
+			Transaction transactionToCreate = new Transaction();
+			transactionToCreate.setAmount(amount);
+			transactionToCreate.setDate(LocalDate.now());
+			transactionToCreate.setMessageContent(content);
+			transactionToCreate.setReciever(reciever);
+			transactionToCreate.setSender(sender);
+			
+			transactionRepository.save(transactionToCreate);
+			reciever.setBalance(reciever.getBalance()+amount);
+			sender.setBalance(sender.getBalance()-amount);
+			utilisateurService.updateUser(reciever);
+			utilisateurService.updateUser(sender);
+		}
+		else {
+			
+		}
+		
+	}
 }
