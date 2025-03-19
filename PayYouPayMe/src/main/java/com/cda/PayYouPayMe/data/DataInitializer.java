@@ -30,7 +30,7 @@ public class DataInitializer {
 			u1.setUsername("usertest");
 			u1.setLogin("usertest");
 			u1.setIban("monIBAN");
-			u1.setEmail("test@test.com");
+			u1.setEmail("test1@test.com");
 		//	u1.setPassword(passwordEncoder.encode("user"));
 			u1.setBalance(30f);
 			utilisateurRepository.save(u1);
@@ -38,22 +38,22 @@ public class DataInitializer {
 			Utilisateur u2 = new Utilisateur();
 			u2.setFirstName("firstNameU2");
 			u2.setLastName("LastNameU2");
-			u2.setUsername("user");
+			u2.setUsername("user2");
 		//	u2.setPassword(passwordEncoder.encode("user"));
-			u2.setLogin("usertest");
+			u2.setLogin("usertest2");
 			u2.setIban("monIBAN");
-			u2.setEmail("test@test.com");
+			u2.setEmail("test2@test.com");
 			u2.setBalance(20f);
 			utilisateurRepository.save(u2);
 
 			Utilisateur u3 = new Utilisateur();
 			u3.setFirstName("firstNameU3");
 			u3.setLastName("LastNameU3");
-			u3.setUsername("user");
+			u3.setUsername("user3");
 		//	u3.setPassword(passwordEncoder.encode("user"));
-			u3.setLogin("usertest");
+			u3.setLogin("usertest3");
 			u3.setIban("monIBAN");
-			u3.setEmail("test@test.com");
+			u3.setEmail("test3@test.com");
 			u3.setBalance(20f);
 			utilisateurRepository.save(u3);
 

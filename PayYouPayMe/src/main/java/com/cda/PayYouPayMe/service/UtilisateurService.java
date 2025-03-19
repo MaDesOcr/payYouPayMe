@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import com.cda.PayYouPayMe.model.Utilisateur;
 import com.cda.PayYouPayMe.repository.UtilisateurRepository;
@@ -31,7 +32,6 @@ public class UtilisateurService {
 	
 	
 	public List<Utilisateur> getAllUtilisateurs() {
-		
 		return this.utilisateurRepository.findAll();
 	}
 
@@ -42,5 +42,31 @@ public class UtilisateurService {
 		utilisateurToModify.setEmail(userToSave.getEmail());
 		utilisateurRepository.save(utilisateurToModify);
 	
+	}
+
+	public void addUserToContactList(String userNameToAdd) {
+		Utilisateur userConnected = getCurrentUser();
+		Utilisateur userToAdd = getUserByUserName(userNameToAdd);
+		if(userToAdd!=null
+				&& userToAdd!= userConnected
+				&& !userConnected.getContact().contains(userToAdd)) {
+			userConnected.getContact().add(userToAdd);
+		}
+		utilisateurRepository.save(userConnected);
+
+	}
+	
+	public Utilisateur getUserByUserName(String usernametoadd) {
+		return utilisateurRepository.findByUsername(usernametoadd).orElse(null);
+	}
+
+	public void deleteContactById(Integer id) {
+		Utilisateur userConnected = getCurrentUser();
+		Utilisateur contactToDelete = utilisateurRepository.findById(id).orElse(null);
+		if(contactToDelete!=null) {
+			userConnected.getContact().remove(contactToDelete);
+		}
+		utilisateurRepository.save(userConnected);
+		
 	}
 }

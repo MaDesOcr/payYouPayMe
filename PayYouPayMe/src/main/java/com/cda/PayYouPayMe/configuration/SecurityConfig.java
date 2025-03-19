@@ -36,9 +36,18 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
                 .anyRequest().authenticated()
             )
-            .formLogin(Customizer.withDefaults());
+            .formLogin(Customizer.withDefaults())
+            .logout(logout -> logout
+                    .logoutUrl("/logout")                    
+                    .logoutSuccessUrl("/")
+                    .deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .permitAll()
+                );
             
         return http.build();
     }
