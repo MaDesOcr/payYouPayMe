@@ -31,7 +31,8 @@ public class UtilisateurController {
 	@PostMapping("/saveutilisateur")
 	public String saveUtilisateur(Model model,
 			@ModelAttribute Utilisateur userToSave) {
-		System.out.println(userToSave);
+		
+		
 		utilisateurService.updateUser(userToSave);
 		
 		Utilisateur utilisateur = utilisateurService.getCurrentUser();

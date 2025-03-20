@@ -1,5 +1,7 @@
 package com.cda.PayYouPayMe.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,11 @@ import com.cda.PayYouPayMe.service.UtilisateurService;
 @RequestMapping("/transaction")
 public class TransactionController {
 
+	
+    private static final Logger logger = LoggerFactory.getLogger(TransactionController.class);
+
+    
+    
 	private final TransactionService transactionService;
 	private final UtilisateurService utilisateurService;
 	
@@ -37,6 +44,7 @@ public class TransactionController {
 			@RequestParam String reciever,
 			@RequestParam Float amount,
 			@RequestParam String content) {
+		logger.info("Tentative de création d'une transaction");
 		transactionService.createTransaction(reciever, amount, content);
 		model.addAttribute("utilisateur", utilisateurService.getCurrentUser());
 		return "transaction";

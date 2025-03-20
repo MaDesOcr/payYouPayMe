@@ -38,7 +38,7 @@ public class AdminController {
 	
 	@GetMapping("/alldatas")
 	public String getAllDatas(Model model) {
-        logger.warn("Connect to allDatas!");
+        logger.info("Connect to allDatas!");
 
 		model.addAttribute("messages", messageService.getAllMessages());
 		model.addAttribute("transactions", transactionService.getAllTransactions());
