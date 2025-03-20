@@ -38,8 +38,8 @@ public class Utilisateur {
 	private String login;
 	private String password;
 
-	
-	
+	private String role;
+
 	
 	
 	public Utilisateur() {
@@ -48,7 +48,7 @@ public class Utilisateur {
 
 	public Utilisateur(Integer id, String lastName, String firstName, String email, String iban, Float balance,
 			String login, String password, List<Transaction> transactionSent, List<Transaction> transactionRecieved,
-			List<Message> messageSent, List<Utilisateur> contact) {
+			List<Message> messageSent, List<Utilisateur> contact, String role) {
 		super();
 		this.id = id;
 		this.lastName = lastName;
@@ -62,11 +62,12 @@ public class Utilisateur {
 		this.transactionRecieved = transactionRecieved;
 		this.messageSent = messageSent;
 		this.contact = contact;
+		this.role = role;
 	}
 
 	public Utilisateur(Integer id, String username, String lastName, String firstName, String email, String iban,
 			Float balance, String login, String password, List<Transaction> transactionSent,
-			List<Transaction> transactionRecieved, List<Message> messageSent, List<Utilisateur> contact) {
+			List<Transaction> transactionRecieved, List<Message> messageSent, List<Utilisateur> contact, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -81,6 +82,7 @@ public class Utilisateur {
 		this.transactionRecieved = transactionRecieved;
 		this.messageSent = messageSent;
 		this.contact = contact;
+		this.role = role;
 	}
 
 	@OneToMany(mappedBy = "sender")
@@ -197,6 +199,14 @@ public class Utilisateur {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

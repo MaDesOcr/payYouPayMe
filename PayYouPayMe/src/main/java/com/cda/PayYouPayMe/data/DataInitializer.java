@@ -27,19 +27,21 @@ public class DataInitializer {
 			Utilisateur u1 = new Utilisateur();
 			u1.setFirstName("firstNameU1");
 			u1.setLastName("LastNameU1");
-			u1.setUsername("usertest");
+			u1.setUsername("user");
 			u1.setLogin("usertest");
 			u1.setIban("monIBAN");
 			u1.setEmail("test1@test.com");
-		//	u1.setPassword(passwordEncoder.encode("user"));
+			u1.setPassword("$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.");
+			u1.setRole("USER");
 			u1.setBalance(30f);
 			utilisateurRepository.save(u1);
 
 			Utilisateur u2 = new Utilisateur();
 			u2.setFirstName("firstNameU2");
 			u2.setLastName("LastNameU2");
-			u2.setUsername("user2");
-		//	u2.setPassword(passwordEncoder.encode("user"));
+			u2.setUsername("admin");
+			u2.setPassword("$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC");
+			u2.setRole("ADMIN");
 			u2.setLogin("usertest2");
 			u2.setIban("monIBAN");
 			u2.setEmail("test2@test.com");
@@ -50,7 +52,7 @@ public class DataInitializer {
 			u3.setFirstName("firstNameU3");
 			u3.setLastName("LastNameU3");
 			u3.setUsername("user3");
-		//	u3.setPassword(passwordEncoder.encode("user"));
+			u3.setPassword("$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.");
 			u3.setLogin("usertest3");
 			u3.setIban("monIBAN");
 			u3.setEmail("test3@test.com");
