@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cda.PayYouPayMe.service.MessageService;
 import com.cda.PayYouPayMe.service.TransactionService;
@@ -46,6 +48,17 @@ public class AdminController {
 		return "alldatas";
 	}
 	
+	@PostMapping("/reponse")
+	public String repondreMessage(Model model,  @RequestParam int id,
+			@RequestParam String content) {
+		messageService.repondreMessage(id, content);
+		
+		
+		model.addAttribute("messages", messageService.getAllMessages());
+		model.addAttribute("transactions", transactionService.getAllTransactions());
+		model.addAttribute("utilisateurs", utilisateurService.getAllUtilisateurs());
+		return "alldatas";
+	}
 	
 	
 	

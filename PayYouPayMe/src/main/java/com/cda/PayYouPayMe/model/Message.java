@@ -12,9 +12,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Message {
 
 	@Id
@@ -25,20 +22,21 @@ public class Message {
 
 	private LocalDate date;
 
+	private String reponse;
+	
+	
 	@ManyToOne
 	private Utilisateur utilisateur;
 
-	
-	
-	
 	public Message() {
 		super();
 	}
 
-	public Message(String content, LocalDate date) {
+	public Message(String content, LocalDate date, String reponse) {
 		super();
 		this.content = content;
 		this.date = date;
+		this.reponse = reponse;
 	}
 
 	public Integer getId() {
@@ -71,6 +69,14 @@ public class Message {
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+
+	public String getReponse() {
+		return reponse;
+	}
+
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
 	}
 	
 	

@@ -26,7 +26,7 @@ public class MessageController {
 		return "message";
 	}
 	
-	
+	///message/addmessage}
 	@PostMapping("/addmessage")
 	public String addMessage(Model model, @RequestParam String messagecontent) {
 		messageService.addMessage(messagecontent);

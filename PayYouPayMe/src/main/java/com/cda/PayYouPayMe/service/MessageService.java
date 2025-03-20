@@ -39,4 +39,13 @@ public class MessageService {
 		messageRepository.save(message);
 		
 	}
+
+	public void repondreMessage(int id, String content) {
+		Message messageToUpdate = messageRepository.findById(id).orElse(null);
+		if(messageToUpdate!=null) {
+			messageToUpdate.setReponse(content);
+			messageRepository.save(messageToUpdate);
+		}
+		
+	}
 }
