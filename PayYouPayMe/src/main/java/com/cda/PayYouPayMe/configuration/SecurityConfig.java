@@ -26,13 +26,49 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http.authorizeHttpRequests(auth -> {
+		return http.csrf(csrf -> csrf
+                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+            )
+            .headers(headers -> headers
+                .frameOptions(frameOptions -> frameOptions.sameOrigin())
+            ).authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/admin/**").hasRole("ADMIN");
 			//auth.requestMatchers("/user").hasAnyRole("ADMIN", "USER");
 			auth.requestMatchers("/signup", "/", "/login").permitAll();
 			auth.anyRequest().authenticated();
 		}).formLogin(Customizer.withDefaults()).build();
 	}
+	
+	 /*
+	   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	        http
+	            .csrf(csrf -> csrf
+	                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+	            )
+	            .headers(headers -> headers
+	                .frameOptions(frameOptions -> frameOptions.sameOrigin())
+	            )
+	            .authorizeHttpRequests(auth -> auth
+	                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+	                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+	                .anyRequest().authenticated()
+	            )
+	            .formLogin(Customizer.withDefaults())
+	            .logout(logout -> logout
+	                    .logoutUrl("/logout")                    
+	                    .logoutSuccessUrl("/")
+	                    .deleteCookies("JSESSIONID")
+	                    .invalidateHttpSession(true)
+	                    .clearAuthentication(true)
+	                    .permitAll()
+	                );
+	            
+	        return http.build();
+	 
+	
+	*/
+	
+	
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {

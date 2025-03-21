@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cda.PayYouPayMe.model.Transaction;
 import com.cda.PayYouPayMe.model.Utilisateur;
 import com.cda.PayYouPayMe.service.TransactionService;
 import com.cda.PayYouPayMe.service.UtilisateurService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/transaction")
@@ -42,7 +45,7 @@ public class TransactionController {
 	@PostMapping("/createtransaction")
 	public String createTransaction(Model model,
 			@RequestParam String reciever,
-			@RequestParam Float amount,
+			@Valid @RequestParam Float amount,
 			@RequestParam String content) {
 		logger.info("Tentative de création d'une transaction");
 		transactionService.createTransaction(reciever, amount, content);

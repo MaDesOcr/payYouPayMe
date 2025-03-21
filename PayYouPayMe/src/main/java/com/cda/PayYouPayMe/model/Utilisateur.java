@@ -86,6 +86,9 @@ public class Utilisateur {
 	}
 
 	@OneToMany(mappedBy = "sender")
+	private List<Transfert> transferts = new ArrayList<Transfert>();
+	
+	@OneToMany(mappedBy = "sender")
 	private List<Transaction> transactionSent = new ArrayList<Transaction>();
 
 	@OneToMany(mappedBy = "reciever")
@@ -207,6 +210,14 @@ public class Utilisateur {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Transfert> getTransferts() {
+		return transferts;
+	}
+
+	public void setTransferts(List<Transfert> transferts) {
+		this.transferts = transferts;
 	}
 
 }

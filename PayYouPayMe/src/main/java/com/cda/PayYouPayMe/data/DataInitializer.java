@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 
 import com.cda.PayYouPayMe.model.Message;
 import com.cda.PayYouPayMe.model.Transaction;
+import com.cda.PayYouPayMe.model.Transfert;
 import com.cda.PayYouPayMe.model.Utilisateur;
 import com.cda.PayYouPayMe.repository.MessageRepository;
 import com.cda.PayYouPayMe.repository.TransactionRepository;
+import com.cda.PayYouPayMe.repository.TransfertRepository;
 import com.cda.PayYouPayMe.repository.UtilisateurRepository;
 
 @Configuration
@@ -22,7 +24,8 @@ public class DataInitializer {
 	@Bean
 	CommandLineRunner initDatabase(UtilisateurRepository utilisateurRepository,
 			MessageRepository messageRepository,
-			TransactionRepository transactionRepository) {
+			TransactionRepository transactionRepository,
+			TransfertRepository transfertRepository) {
 		return args -> {
 			Utilisateur u1 = new Utilisateur();
 			u1.setFirstName("firstNameU1");
@@ -90,6 +93,15 @@ public class DataInitializer {
 			Message m2 = new Message("message 2", LocalDate.now(), null);
 			m2.setUtilisateur(u2);
 			messageRepository.save(m2);
+			
+			
+			Transfert transfert1 = new Transfert(10f, "transfert 1", LocalDate.now(), u1);
+			Transfert transfert2  = new Transfert(-10f, "transfert 2", LocalDate.now(), u1);
+			Transfert transfert3 = new Transfert(100f, "transfert 3", LocalDate.now(), u2);
+			transfertRepository.save(transfert1);
+			transfertRepository.save(transfert2);
+			transfertRepository.save(transfert3);
+
 		};
 	}
 
