@@ -39,4 +39,12 @@ public class UtilisateurController {
 		model.addAttribute("userToDisplay", utilisateur);
 		return "affichageUser";
 	}
+	
+	@PostMapping("/suspendrecompte")
+	public String supendreUtilisateur(Model model) {
+		utilisateurService.suspendreCompte();
+		return "home";
+	}
 }
+
+

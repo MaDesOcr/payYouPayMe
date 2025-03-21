@@ -37,6 +37,7 @@ public class DataInitializer {
 			u1.setPassword("$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.");
 			u1.setRole("USER");
 			u1.setBalance(30f);
+			u1.setActif(true);
 			utilisateurRepository.save(u1);
 
 			Utilisateur u2 = new Utilisateur();
@@ -49,6 +50,7 @@ public class DataInitializer {
 			u2.setIban("monIBAN");
 			u2.setEmail("test2@test.com");
 			u2.setBalance(20f);
+			u2.setActif(true);
 			utilisateurRepository.save(u2);
 
 			Utilisateur u3 = new Utilisateur();
@@ -60,7 +62,23 @@ public class DataInitializer {
 			u3.setIban("monIBAN");
 			u3.setEmail("test3@test.com");
 			u3.setBalance(20f);
+			u3.setActif(true);
 			utilisateurRepository.save(u3);
+			
+			//user suspendu
+			Utilisateur u4 = new Utilisateur();
+			u4.setFirstName("firstNameU3");
+			u4.setLastName("LastNameU3");
+			u4.setUsername("user4");
+			u4.setPassword("$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc."); //mdp user
+			u4.setLogin("usertest3");
+			u4.setIban("monIBAN");
+			u4.setEmail("test3@test.com");
+			u4.setBalance(20f);
+			u4.setRole("SUSPENDU");
+			u4.setActif(true);
+			
+			utilisateurRepository.save(u4);
 
 			u1.getContact().add(u2);
 			

@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .frameOptions(frameOptions -> frameOptions.sameOrigin())
             ).authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/admin/**").hasRole("ADMIN");
+			auth.requestMatchers("/contact/**", "/message/**", "/transaction/**", "/transfert/**", "/utilisateur/**", "/me/user/**").hasAnyRole("USER", "ADMIN");
 			//auth.requestMatchers("/user").hasAnyRole("ADMIN", "USER");
 			auth.requestMatchers("/signup", "/", "/login").permitAll();
 			auth.anyRequest().authenticated();

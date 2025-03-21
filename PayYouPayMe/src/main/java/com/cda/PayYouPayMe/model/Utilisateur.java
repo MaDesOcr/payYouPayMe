@@ -40,11 +40,42 @@ public class Utilisateur {
 
 	private String role;
 
-	
+	private boolean actif;
 	
 	public Utilisateur() {
 		super();
 	}
+	
+	
+	
+	
+
+	public Utilisateur(Integer id, String username, String lastName, String firstName, String email, String iban,
+			Float balance, String login, String password, String role, boolean actif, List<Transfert> transferts,
+			List<Transaction> transactionSent, List<Transaction> transactionRecieved, List<Message> messageSent,
+			List<Utilisateur> contact) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.iban = iban;
+		this.balance = balance;
+		this.login = login;
+		this.password = password;
+		this.role = role;
+		this.actif = actif;
+		this.transferts = transferts;
+		this.transactionSent = transactionSent;
+		this.transactionRecieved = transactionRecieved;
+		this.messageSent = messageSent;
+		this.contact = contact;
+	}
+
+
+
+
 
 	public Utilisateur(Integer id, String lastName, String firstName, String email, String iban, Float balance,
 			String login, String password, List<Transaction> transactionSent, List<Transaction> transactionRecieved,
@@ -218,6 +249,14 @@ public class Utilisateur {
 
 	public void setTransferts(List<Transfert> transferts) {
 		this.transferts = transferts;
+	}
+
+	public boolean isActif() {
+		return actif;
+	}
+
+	public void setActif(boolean actif) {
+		this.actif = actif;
 	}
 
 }

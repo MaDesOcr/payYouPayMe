@@ -37,8 +37,7 @@
 		<th>MessageContent</th>
 		<th>Date</th>
 		<th>Amount</th>
-		<th>Sender name</th>
-		<th>Reciever name</th>
+		<th>actif</th>
 
 	</tr>
 	<tr th:each="transaction : ${transactions}">
@@ -50,3 +49,33 @@
 
 	</tr>
 </table>
+
+
+
+
+
+<h2>Utilisateur</h2>
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Username</th>
+		<th>balance</th>
+		<th>actif</th>
+		<th>desactiver</th>
+
+	</tr>
+	<tr th:each="user : ${utilisateurs}">
+		<td th:text="${user.id}" />
+		<td th:text="${user.username}" />
+		<td th:text="${user.balance}" />
+		<td th:text="${user.actif}" />
+		<td><span th:if="${user.actif}">
+				<form th:action="@{'/admin/desactiveruser?id=' + ${user.id}}"
+					method="POST">
+					<input type="submit" value="desactiver">
+				</form>
+			</span> 
+		</td>
+	</tr>
+</table>
+

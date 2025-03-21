@@ -60,6 +60,15 @@ public class AdminController {
 		return "alldatas";
 	}
 	
+	@PostMapping("/desactiveruser")
+	public String desactiverUser(Model model, @RequestParam int id) {
+		utilisateurService.suspendreCompte(id);
+		
+		model.addAttribute("messages", messageService.getAllMessages());
+		model.addAttribute("transactions", transactionService.getAllTransactions());
+		model.addAttribute("utilisateurs", utilisateurService.getAllUtilisateurs());
+		return "alldatas";
+	}
 	
 	
 	

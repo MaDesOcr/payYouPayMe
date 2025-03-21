@@ -69,4 +69,18 @@ public class UtilisateurService {
 		utilisateurRepository.save(userConnected);
 		
 	}
+
+	public void suspendreCompte() {
+		Utilisateur userConnected = getCurrentUser();
+		userConnected.setRole("SUSPENDU");
+		utilisateurRepository.save(userConnected);		
+	}
+
+	public void suspendreCompte(int id) {
+		Utilisateur utilisateurToSuspendre = utilisateurRepository.findById(id).get();
+		utilisateurToSuspendre.setActif(false);
+		utilisateurToSuspendre.setRole("SUSPENDU");
+		utilisateurRepository.save(utilisateurToSuspendre);
+		
+	}
 }
